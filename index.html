@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Shop Name - Premium Electronics</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s 0.2s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 1s 0.4s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 2rem;
+            background: #f8f9fa;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #667eea;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        /* About Page Styles */
+        .about-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .about-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-content {
+            padding: 5rem 2rem;
+        }
+
+        .about-section {
+            margin-bottom: 4rem;
+        }
+
+        .about-section h2 {
+            font-size: 2rem;
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .about-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Owner Section */
+        .owner-section {
+            background: #f8f9fa;
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+        }
+
+        .owner-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .owner-image-placeholder {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .owner-info h3 {
+            font-size: 2rem;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .owner-info p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Customer Testimonials */
+        .testimonials {
+            padding: 4rem 2rem;
+        }
+
+        .testimonials h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #667eea;
+            margin-bottom: 3rem;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .customer-image-placeholder {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .testimonial-card h4 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            color: #666;
+        }
+
+        /* Certificates Section */
+        .certificates {
+            background: #f8f9fa;
+            padding: 4rem 2rem;
+        }
+
+        .certificates h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #667eea;
+            margin-bottom: 3rem;
+        }
+
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .certificate-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .certificate-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .certificate-card h4 {
+            color: #667eea;
+            margin-top: 1rem;
+        }
+
+        /* Shop Images */
+        .shop-gallery {
+            padding: 4rem 2rem;
+        }
+
+        .shop-gallery h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #667eea;
+            margin-bottom: 3rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            height: 250px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            background: #2d3748;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        footer h3 {
+            margin-bottom: 1rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1, .about-hero h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .features-grid,
+            .testimonials-grid,
+            .certificates-grid,
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Home Page -->
+    <div id="home">
+        <nav>
+            <div class="container">
+                <div class="logo">Your Shop Name</div>
+                <ul>
+                    <li><a href="#home" onclick="showPage('home')">Home</a></li>
+                    <li><a href="#about" onclick="showPage('about')">About</a></li>
+                    <li><a href="#home">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="hero">
+            <h1>Welcome to Your Shop Name</h1>
+            <p>Your Trusted Partner for Quality Electronics</p>
+            <a href="#about" onclick="showPage('about')" class="cta-button">Learn More About Us</a>
+        </div>
+
+        <div class="features">
+            <div class="container">
+                <h2>Why Choose Us?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Premium Quality</h3>
+                        <p>We offer only genuine, high-quality electronics from trusted brands worldwide.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🛡️</div>
+                        <h3>Warranty Protection</h3>
+                        <p>All products come with comprehensive warranty coverage for your peace of mind.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💰</div>
+                        <h3>Best Prices</h3>
+                        <p>Competitive pricing without compromising on quality or service excellence.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🚚</div>
+                        <h3>Fast Delivery</h3>
+                        <p>Quick and reliable delivery service to get your products when you need them.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔧</div>
+                        <h3>Expert Support</h3>
+                        <p>Our knowledgeable team provides expert advice and after-sales support.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⭐</div>
+                        <h3>Customer Satisfaction</h3>
+                        <p>Thousands of happy customers trust us for their electronic needs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <h3>Your Shop Name</h3>
+            <p>📍 Your Shop Address</p>
+            <p>📞 Your Phone Number</p>
+            <p>📧 Your Email Address</p>
+            <p style="margin-top: 2rem;">© 2024 Your Shop Name. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- About Page -->
+    <div id="about" style="display: none;">
+        <nav>
+            <div class="container">
+                <div class="logo">Your Shop Name</div>
+                <ul>
+                    <li><a href="#home" onclick="showPage('home')">Home</a></li>
+                    <li><a href="#about" onclick="showPage('about')">About</a></li>
+                    <li><a href="#home" onclick="showPage('home')">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="about-hero">
+            <h1>About Your Shop Name</h1>
+            <p>Building Trust Through Quality and Service</p>
+        </div>
+
+        <div class="about-content container">
+            <div class="about-section">
+                <h2>Our Story</h2>
+                <p>Your Shop Name has been serving the community for [X] years, providing top-quality electronics and exceptional customer service. We started with a simple vision: to be the most trusted electronics retailer in the region, and today we're proud to have earned the loyalty of thousands of satisfied customers.</p>
+                <p>Our commitment to excellence, genuine products, and customer satisfaction has made us a household name in electronics retail.</p>
+            </div>
+
+            <div class="owner-section">
+                <h2>Meet Our Owner</h2>
+                <div class="owner-content">
+                    <div class="owner-image-placeholder">
+                        [Your Owner Photo]
+                    </div>
+                    <div class="owner-info">
+                        <h3>Owner Name</h3>
+                        <p><strong>Founder & CEO</strong></p>
+                        <p>"Our mission is to provide every customer with the best electronics at honest prices, backed by service you can trust. Your satisfaction is our success."</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="shop-gallery">
+                <h2>Our Store</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        [Your Shop Front Photo]
+                    </div>
+                    <div class="gallery-item">
+                        [Your Shop Interior Photo]
+                    </div>
+                    <div class="gallery-item">
+                        [Your Shop Display Photo]
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonials">
+                <h2>What Our Customers Say</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="customer-image-placeholder">
+                            [Customer 1 Photo]
+                        </div>
+                        <h4>Customer Name 1</h4>
+                        <p>"Excellent service and genuine products! I've been buying from Your Shop Name for years and have never been disappointed. Highly recommended!"</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="customer-image-placeholder">
+                            [Customer 2 Photo]
+                        </div>
+                        <h4>Customer Name 2</h4>
+                        <p>"Best electronics shop in town! The owner personally helped me choose the right product for my needs. Great prices and honest advice."</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="customer-image-placeholder">
+                            [Customer 3 Photo]
+                        </div>
+                        <h4>Customer Name 3</h4>
+                        <p>"Trustworthy and reliable! I bought multiple items and the after-sales service is outstanding. They truly care about customer satisfaction."</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="certificates">
+                <h2>Our Certifications & Achievements</h2>
+                <div class="certificates-grid">
+                    <div class="certificate-card">
+                        <div class="certificate-placeholder">
+                            [Your Certification 1]
+                        </div>
+                        <h4>Authorized Dealer Certificate</h4>
+                    </div>
+                    <div class="certificate-card">
+                        <div class="certificate-placeholder">
+                            [Your Certification 2]
+                        </div>
+                        <h4>Business License</h4>
+                    </div>
+                    <div class="certificate-card">
+                        <div class="certificate-placeholder">
+                            [Your Certification 3]
+                        </div>
+                        <h4>Excellence Award</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <h3>Your Shop Name</h3>
+            <p>📍 Your Shop Address</p>
+            <p>📞 Your Phone Number</p>
+            <p>📧 Your Email Address</p>
+            <p style="margin-top: 2rem;">© 2024 Your Shop Name. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        function showPage(page) {
+            document.getElementById('home').style.display = page === 'home' ? 'block' : 'none';
+            document.getElementById('about').style.display = page === 'about' ? 'block' : 'none';
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
